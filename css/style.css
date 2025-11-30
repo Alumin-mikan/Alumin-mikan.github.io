@@ -1,0 +1,636 @@
+@import url(sanitize.css);
+
+/* ========================
+   ベーススタイル
+   ======================== */
+html,
+body {
+  width: 100vw;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  background: #fff;
+  color: #333;
+  font-family: "Noto Sans JP", "メイリオ", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+/* 見出し */
+h3 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+/* コンテンツ全般 */
+.content {
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.link-wrapper img:hover {
+  opacity: 0.5;
+}
+
+img {
+  max-width: 400px;
+  height: auto;
+  display: block;
+}
+
+/* ========================
+   レイアウト全般
+   ======================== */
+#wrapper {
+  display: flex;
+  width: 1360px;
+  margin: 0 auto;
+  min-height: 800px;
+  overflow-x: visible;
+}
+
+.main-contents {
+  flex: 1;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+#left-menu {
+  flex-shrink: 0;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+/* ========================
+   ログインフォーム
+   ======================== */
+input,
+select,
+button {
+  font-size: 1.2em;
+  width: 100%;
+  max-width: 600px;
+  padding: 8px;
+}
+
+button {
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.control {
+  margin-bottom: 1em;
+}
+
+.required {
+  margin-left: 0.3em;
+  color: #f33;
+  font-size: 0.9em;
+  padding: 3px;
+  background-color: #fde;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* ========================
+   PC用メニュー（サイドバー）
+   ======================== */
+#mainNav {
+  width: 240px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#mainNav .panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  overflow: auto;
+}
+
+#mainNav .panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+#mainNav .panel ul>li {
+  border-bottom: 1px solid #444;
+  position: relative;
+}
+
+#mainNav .panel ul>li>a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#mainNav .panel ul>li>a:hover,
+.sub-menu li>a:hover {
+  background-color: #555;
+}
+
+.sub-menu {
+  display: none !important;
+  background-color: #444;
+  padding-left: 20px;
+}
+
+#mainNav li.open>.sub-menu {
+  display: block !important;
+}
+
+#mainNav .panel ul>li:has(> .sub-menu)>a::after {
+  content: " ▼";
+  float: right;
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+#mainNav .inner {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#left-menu,
+#mainNav {
+  z-index: 1500;      /* iframe より十分大きい数値を指定 */
+}
+
+/* ========================
+   スマホ用メニューパネル
+   ======================== */
+#mobileMenuPanel {
+  position: fixed;
+  top: 0;
+  left: -80vw;
+  width: 80vw;
+  max-width: 300px;
+  height: 100vh;
+  background-color: #333;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding-top: 20px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+#mobileMenuPanel.open {
+  left: 0;
+}
+
+#mobileMenuPanel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mobileMenuPanel ul li {
+  border-bottom: 1px solid #444;
+}
+
+#mobileMenuPanel ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#mobileMenuPanel ul li a:hover {
+  background-color: #555;
+}
+
+/* ハンバーガーメニューアイコン */
+#menuToggle {
+  display: block;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #333;
+  user-select: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1100;
+  border-radius: 15%;
+}
+
+/* ========================
+   メディアクエリ
+   ======================== */
+@media screen and (min-width: 1280px) {
+  #menuToggle {
+    display: none;
+  }
+
+  #mobileMenuPanel {
+    position: static;
+    left: 0 !important;
+    height: auto;
+    background-color: transparent;
+    padding-top: 0;
+    overflow: visible;
+    width: 240px;
+    max-width: none;
+    color: inherit;
+  }
+
+  #left-menu {
+    display: block;
+    width: 240px;
+    overflow: visible;
+  }
+
+  .table-log th {
+    white-space: nowrap;
+  }
+
+  #mainNav {
+    background-color: #333;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  #left-menu {
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #wrapper {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #left-menu {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .link-wrapper {
+    flex-wrap: wrap;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ========================
+   データ公開ページ 表
+   ======================== */
+.table-log {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.table-log th,
+.table-log td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.table-log th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.table-log td:nth-child(1),
+.table-log td:nth-child(2),
+.table-log td:nth-child(3),
+.table-log th:nth-child(1),
+.table-log th:nth-child(2),
+.table-log th:nth-child(3),
+.table-log th:nth-child(4) {
+  text-align: center;
+}
+
+.table-log tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* ========================
+   グリッドレイアウト
+   ======================== */
+.gridWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.box {
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+}
+
+.box img,
+.box iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.box h3 {
+  font-size: 16px;
+  padding: 10px 0 15px;
+  text-align: left;
+}
+
+.box p {
+  font-size: 15px;
+  text-align: left;
+}
+
+.box p.readmore {
+  padding: 10px 5px 5px;
+  text-align: right;
+}
+
+.box p.readmore a {
+  padding: 3px 7px;
+  border-radius: 3px;
+  background-color: #ddd;
+  text-decoration: none;
+}
+
+.counter-display img {
+    display: inline-block; 
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================
+   更新情報 表
+   ======================== */
+.box table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.box td:first-child {
+  white-space: nowrap;
+  vertical-align: top;
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+.box td:last-child {
+  white-space: normal;
+  word-break: break-word;
+  vertical-align: top;
+  font-size: 15px;
+}
+
+.box-info td {
+  vertical-align: top;
+  padding-right: 10px;
+}
+
+.box-info td:first-child {
+  white-space: nowrap;
+}
+
+.box-info td:last-child {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* ========================
+   ヘッダー
+   ======================== */
+#header {
+  display: flex;
+  align-items: center;
+  background-image: url(".png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #222;
+  color: #fff;
+  width: 100%;
+  height: 350px;
+  padding-left: 3%;
+}
+
+#header .logo a {
+  color: #fff;
+  text-decoration: none;
+  padding-right: 40px;
+  font-size: 35px;
+}
+
+#header .logo span {
+  color: #fff;
+  display: block;
+  font-size: 20px;
+}
+
+/* ========================
+   フッター
+   ======================== */
+#copyright {
+  flex: 1;
+  padding: 10px 0 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ========================
+   YouTube埋め込みレスポンシブ
+   ======================== */
+.youtube .inner {
+  padding-top: 56.25%;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.youtube .inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ========================
+   C#コードブロック
+   ======================== */
+code {
+  background-color: #1E1E1E;
+  color: #D4D4D4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'Source Code Pro', Consolas, Monaco, 'Courier New', monospace;
+  font-size: 0.8em;
+  user-select: text;
+}
+
+.code-block {
+  width: 100%;
+  max-width: 100%;
+  color: #D4D4D4;
+  border-radius: 5px;
+  font-family: "Fira Code", monospace;
+  font-size: 18px;
+  overflow-x: auto;
+  margin: 0 auto;
+  position: relative;
+}
+
+.code-header {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn {
+  background-color: #3C3C3C;
+  border: none;
+  color: #D4D4D4;
+  padding: 5px 30px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background-color: #555555;
+}
+
+.hljs-ln-numbers {
+  width: 2em;
+  text-align: right;
+  user-select: none;
+  color: #858585;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+  font-family: monospace;
+}
+
+.hljs-ln-numbers>div {
+  line-height: 1.5em;
+  font-size: 12px;
+  padding-right: 1em;
+}
+
+/* シンタックスハイライト色 */
+.hljs-keyword {
+  color: #569CD6 !important;
+  font-weight: 600;
+}
+
+.hljs-title,
+.hljs-type {
+  color: #4EC9B0 !important;
+}
+
+.hljs-function {
+  color: #DCDCAA !important;
+}
+
+.hljs-string {
+  color: #CE9178 !important;
+}
+
+.hljs-comment {
+  color: #6A9955 !important;
+}
+
+/* ========================
+   Pythonコードブロック
+   ======================== */
+.code-block.python {
+  background-color: #1E1E1E;
+  color: #D4D4D4;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: "Fira Code", "Source Code Pro", Consolas, Monaco, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-x: auto;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.code-block.python .keyword {
+  color: #569CD6;
+  /* def, class, import, return など */
+  font-weight: 600;
+}
+
+.code-block.python .builtin {
+  color: #4EC9B0;
+  /* True, False, None, len, range など */
+}
+
+.code-block.python .function {
+  color: #DCDCAA;
+  /* 関数名 */
+}
+
+.code-block.python .string {
+  color: #CE9178;
+  /* "文字列" */
+}
+
+.code-block.python .comment {
+  color: #6A9955;
+  font-style: italic;
+  /* # コメント */
+}
+
+.code-block.python .number {
+  color: #B5CEA8;
+  /* 数値リテラル */
+}

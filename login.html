@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9X0H98GSC"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-S9X0H98GSC');
+	</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ログイン画面</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/banners/favicon.ico">
+
+	<meta name="robots" content="index, follow">
+	<meta name="author" content="Alumin-mikan" />
+	<meta name="description" content="Aluminが運営する個人サイトです。BveTrainsim・BveEX・耳コピ楽譜などのコンテンツがあります。">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="アルミ缶の上にあるみかん。">
+	<meta property="og:title" content="アルミ缶の上にあるみかん。">
+	<meta property="og:description" content="Aluminが運営する個人サイトです。BveTrainsim・BveEX・耳コピ楽譜などのコンテンツがあります。">
+	<meta property="og:url" content="https://alumin-mikan.github.io/login/form.html">
+	<meta property="og:image" content="https://alumin-mikan.github.io/images/banners/ogp.png">
+	<meta property="og:locale" content="ja_JP">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@Alumin-mikan" />
+</head>
+
+<body>
+    <div id="wrapper">
+
+		<div id="left-menu"></div>
+
+        <div class="main-contents">
+            <header id="header" role="banner"></header>
+
+            <div class="content">
+                <h3>ログイン</h3>
+                <p>
+                    　ログインが必要なページ・限定公開のページにアクセスする際に使用してください。ログインID・パスワードによってアクセスできるページが変わるため、注意してください。<br>
+                    　ログインID・パスワードやアクセス日時など、入力に関する情報は逐一保存されています。そのため、個人のメールアドレスやパスワードは入力しないでください。不正なログインを試みた形跡があった場合は、アクセスを制限することがありますのでご了承ください。<br>
+                    　送信には時間を要する場合があります。送信ボタンは1回だけ押してください。また、ログインIDがない場合は空欄のままにし、パスワードのみを入力してください。<br>
+                </p>
+                <form id="loginForm">
+                    <div class="control">
+                        <label for="mymail">ログインID</label>
+                        <input id="mymail" type="text" name="mymail">
+                    </div>
+                    <div class="control">
+                        <label for="passcode">パスワード<span class="required">必須</span></label>
+                        <input id="passcode" type="password" name="passcode" required>
+                    </div>
+                    <div class="control">
+                        <button type="submit">送信（数秒かかります）</button>
+                    </div>
+                </form>
+            </div>
+		
+            <footer id="footer"></footer>
+		</div>
+	</div>
+
+ 	<script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/menu.js"></script>
+
+</body>
+
+</html>
