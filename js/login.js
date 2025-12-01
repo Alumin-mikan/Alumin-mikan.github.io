@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const ip = ipData.ip || "unknown";
 
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbyWG7AU7cU_l4Sp0q5gxaPOg08EbCN4ewnP_vPQv3aA1242ove9raXTEJ052mKyBq6u/exec",
+        "https://script.google.com/macros/s/AKfycbzH2JriV3mOy5nWXNjcXFUN5o_dmm47G8cXSKq3CfajH3rbvKi9VW-ODLY85XRqhAL4/exec",
         {
           method: "POST",
           headers: {
