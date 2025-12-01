@@ -185,7 +185,8 @@ label {
 
 #left-menu,
 #mainNav {
-  z-index: 1500;      /* iframe より十分大きい数値を指定 */
+  z-index: 1500;
+  /* iframe より十分大きい数値を指定 */
 }
 
 /* ========================
@@ -440,15 +441,20 @@ label {
 #header {
   display: flex;
   align-items: center;
-  background-image: url(".png");
+  background-image: url("/images/banners/alumican.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #222;
   color: #fff;
   width: 100%;
-  height: 350px;
-  padding-left: 3%;
+  height: 400px;
+  padding-left: 5%;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000;
 }
 
 #header .logo a {
