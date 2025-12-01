@@ -397,12 +397,6 @@ label {
   text-decoration: none;
 }
 
-.counter-display img {
-    display: inline-block; 
-    margin: 0;
-    padding: 0;
-}
-
 /* ========================
    更新情報 表
    ======================== */
