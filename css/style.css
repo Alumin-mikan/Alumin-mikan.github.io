@@ -435,6 +435,10 @@ label {
   word-break: break-word;
 }
 
+.hidden-row {
+    display: none;
+}
+
 /* ========================
    ヘッダー
    ======================== */
