@@ -17,7 +17,7 @@ fetch('/include/update.txt')
       const description = parts[1] ? parts[1] : '';
 
       const tr = document.createElement('tr');
-      if (index >= 5) {
+      if (index >= 3) {
         tr.classList.add('hidden-row');
       }
       tr.innerHTML = `<td>${date}</td><td>${description}</td>`;
